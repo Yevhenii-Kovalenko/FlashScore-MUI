@@ -1,24 +1,19 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Typography,
-} from '@mui/material';
 import React from 'react';
-import Match from './Match';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
+
+import Match from './Match';
 import { useMatchContext } from '../context/MatchContext';
 
 function Leagues() {
-  const { matches, filteredLeagues, searchFilteredMatch } = useMatchContext();
+  const { matches, filteredLeagues, searchFilteredMatch, onFavoriteMatch } = useMatchContext();
 
   return (
     <Box sx={{ marginTop: '20px' }}>
       {filteredLeagues.length === 0 ? (
-        <Typography>
-          По запиту :{searchFilteredMatch} нічого не знайдено
-        </Typography>
+        <Typography>По запиту :{searchFilteredMatch} нічого не знайдено</Typography>
       ) : (
         <div>
           {filteredLeagues.map((league) => (
@@ -28,15 +23,12 @@ function Leagues() {
                 id="panel1a-header"
                 expandIcon={<ExpandMoreIcon />}
               >
-                <Box
-                  sx={{ display: 'flex', textAlign: 'center' }}
-                  component="div"
-                >
+                <Box sx={{ display: 'flex', textAlign: 'center' }} component="div">
                   <Typography
                     sx={{ width: '25px', height: '20px', marginRight: '10px' }}
                     component="img"
                     src={league.url}
-                  ></Typography>
+                  />
                   <Typography>{league.name}</Typography>
                 </Box>
               </AccordionSummary>
@@ -51,7 +43,7 @@ function Leagues() {
                       goals={match.goals}
                       status={match.status}
                       score={match.score}
-                      // onFavoriteMatch={() => onFavoriteMatch(match)}
+                      onFavoriteMatch={() => onFavoriteMatch(match)}
                       match={match}
                       isFavorites={false}
                     />

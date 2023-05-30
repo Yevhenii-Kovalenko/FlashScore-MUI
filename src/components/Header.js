@@ -1,14 +1,11 @@
-import {
-  AppBar,
-  Box,
-  IconButton,
-  TextField,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import React from 'react';
+
 import MenuIcon from '@mui/icons-material/Menu';
-import { useSidebarContext } from '../context/SidebarContext';
+
+import { AppBar, Box, IconButton, TextField, Toolbar, Typography } from '@mui/material';
+
 import { useMatchContext } from '../context/MatchContext';
+import { useSidebarContext } from '../context/SidebarContext';
 
 function Header() {
   const { openDrawer } = useSidebarContext();

@@ -1,13 +1,18 @@
-import { Box, Checkbox, IconButton, Typography } from '@mui/material';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
-import { useMatchContext } from '../context/MatchContext';
-import { useState } from 'react';
+import { React, useState } from 'react';
 
-function Match({ match, home, guest, goals, status, isFavorites }) {
-  const { onFavoriteMatch } = useMatchContext();
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+
+import { Box, Checkbox, IconButton, Typography } from '@mui/material';
+
+import ModalMatchInfo from './ModalMatchInfo';
+import { useMatchContext } from '../context/MatchContext';
+
+function Match({ match, home, guest, goals, status, isFavorites, id }) {
+  const { onFavoriteMatch, handleOpenModal, selectedMatchInfo } = useMatchContext();
   const [toggleFavorite, setToggleFavorite] = useState(isFavorites);
 
+  // eslint-disable-next-line no-shadow
   const onClickFavorite = (match) => {
     setToggleFavorite(!toggleFavorite);
     onFavoriteMatch(match);
@@ -49,7 +54,7 @@ function Match({ match, home, guest, goals, status, isFavorites }) {
               component="img"
               sx={{ width: '20px', height: '20px', mr: '5px' }}
               src={home.img}
-            ></Typography>
+            />
             <Typography>{home.name}</Typography>
           </Box>
           <Box sx={{ display: 'flex' }} component="div">
@@ -57,26 +62,24 @@ function Match({ match, home, guest, goals, status, isFavorites }) {
               component="img"
               sx={{ width: '20px', height: '20px', mr: '5px' }}
               src={guest.img}
-            ></Typography>
+            />
             <Typography>{guest.name}</Typography>
           </Box>
         </Box>
         <Box component="div">
-          <Typography>
-            {goals.filter((goal) => goal.team === home.id).length}
-          </Typography>
-          <Typography>
-            {goals.filter((goal) => goal.team === guest.id).length}
-          </Typography>
+          <Typography>{goals.filter((goal) => goal.team === home.id).length}</Typography>
+          <Typography>{goals.filter((goal) => goal.team === guest.id).length}</Typography>
         </Box>
       </Box>
 
       <Typography
-        // onClick={() => onOpenModal(match)}
+        onClick={() => handleOpenModal(match)}
         sx={{ width: ' 20% ', cursor: 'pointer', textDecoration: 'underline' }}
       >
         Show more
       </Typography>
+
+      {selectedMatchInfo.map((matchInf) => matchInf.id)[0] === id ? <ModalMatchInfo /> : ''}
     </Box>
   );
 }

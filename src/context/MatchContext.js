@@ -1,23 +1,28 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import matches from '../data/matches';
+import { React, createContext, useContext, useMemo, useState } from 'react';
+
 import allLeagues from '../data/allLeagues';
+import matches from '../data/matches';
 
 const MatchContext = createContext();
 
 export const useMatchContext = () => useContext(MatchContext);
 
-export const MatchProvider = ({ children }) => {
-  const storedFavorite = JSON.parse(localStorage.getItem('favoriteMatch'));
-
+export function MatchProvider({ children }) {
   const [searchFilteredMatch, setSearchFilteredMatch] = useState('');
-  const [favoriteMatch, setFavoriteMatch] = useState(storedFavorite);
+  const [favoriteMatch, setFavoriteMatch] = useState([]);
   const [openSnack, setOpenSnack] = useState(false);
   const [openSnackRemove, setOpenSnackRemove] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedMatchInfo, setSelectedMatchInfo] = useState([]);
 
-  useEffect(() => {
-    localStorage.setItem('favoriteMatch', JSON.stringify(favoriteMatch));
-  }, [favoriteMatch]);
-
+  const handleOpenModal = (match) => {
+    setOpenModal(true);
+    setSelectedMatchInfo((prevMatch) => [...prevMatch, match]);
+  };
+  const handleCloseModal = (match) => {
+    setOpenModal(false);
+    setSelectedMatchInfo((prevMatch) => prevMatch.filter((matchInfo) => matchInfo !== match));
+  };
   const handleOpenSnack = () => {
     setOpenSnack(true);
   };
@@ -46,9 +51,7 @@ export const MatchProvider = ({ children }) => {
 
   const filteredMatches = matches.filter(
     (match) =>
-      match.home.name
-        .toLowerCase()
-        .includes(searchFilteredMatch.toLowerCase()) ||
+      match.home.name.toLowerCase().includes(searchFilteredMatch.toLowerCase()) ||
       match.guest.name.toLowerCase().includes(searchFilteredMatch.toLowerCase())
   );
 
@@ -58,9 +61,7 @@ export const MatchProvider = ({ children }) => {
 
   const onFavoriteMatch = (match) => {
     if (favoriteMatch.includes(match)) {
-      setFavoriteMatch((prevMatch) =>
-        prevMatch.filter((prevMatch) => prevMatch !== match)
-      );
+      setFavoriteMatch((prevMatch) => prevMatch.filter((favMatch) => favMatch !== match));
       setOpenSnackRemove(true);
     } else {
       setFavoriteMatch((prevMatch) => [...prevMatch, match]);
@@ -68,27 +69,35 @@ export const MatchProvider = ({ children }) => {
     }
   };
 
-  return (
-    <MatchContext.Provider
-      value={{
-        matches,
-        allLeagues,
-        filteredLeagues,
-        searchFilteredMatch,
-        onChangeSearchValue,
-        filteredMatches,
-        onFavoriteMatch,
-        favoriteMatch,
-        badgeValue: favoriteMatch.length,
-        handleOpenSnack,
-        handleCloseSnack,
-        openSnack,
-        openSnackRemove,
-        handleOpenSnackRemove,
-        handleCloseSnackRemove,
-      }}
-    >
-      {children}
-    </MatchContext.Provider>
+  const badgeValue = favoriteMatch.length;
+
+  const contextValue = useMemo(
+    () => ({
+      matches,
+      allLeagues,
+      filteredLeagues,
+      searchFilteredMatch,
+      onChangeSearchValue,
+      filteredMatches,
+      onFavoriteMatch,
+      badgeValue,
+      favoriteMatch,
+      handleOpenSnack,
+      handleCloseSnack,
+      openSnack,
+      openSnackRemove,
+      handleOpenSnackRemove,
+      handleCloseSnackRemove,
+      openModal,
+      handleOpenModal,
+      handleCloseModal,
+      selectedMatchInfo,
+    }),
+    [filteredLeagues, searchFilteredMatch, filteredMatches, onFavoriteMatch, badgeValue, favoriteMatch, openSnack, openSnackRemove, openModal, selectedMatchInfo]
   );
-};
+
+  return useMemo(
+    () => <MatchContext.Provider value={contextValue}>{children}</MatchContext.Provider>,
+    [children, contextValue]
+  );
+}

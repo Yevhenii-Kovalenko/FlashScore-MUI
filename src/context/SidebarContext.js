@@ -1,28 +1,35 @@
-import { createContext, useContext, useState } from 'react';
+import { React, createContext, useCallback, useContext, useMemo, useState } from 'react';
 
 const SidebarContext = createContext();
 
 export const useSidebarContext = () => useContext(SidebarContext);
 
-export const SidebarProvider = ({ children }) => {
+export function SidebarProvider({ children }) {
   const [open, setOpen] = useState(false);
 
-  const openDrawer = () => {
+  const openDrawer = useCallback(() => {
     setOpen(true);
-  };
-  const closeDrawer = () => {
-    setOpen(false);
-  };
+  }, []);
 
-  return (
-    <SidebarContext.Provider
-      value={{
-        open,
-        openDrawer,
-        closeDrawer,
-      }}
-    >
-      {children}
-    </SidebarContext.Provider>
+  const closeDrawer = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  // const openDrawer = () => {
+  //   setOpen(true);
+  // };
+  // const closeDrawer = () => {
+  //   setOpen(false);
+  // };
+
+  const contextValue = useMemo(
+    () => ({
+      open,
+      openDrawer,
+      closeDrawer,
+    }),
+    [open, openDrawer, closeDrawer]
   );
-};
+
+  return <SidebarContext.Provider value={contextValue}>{children}</SidebarContext.Provider>;
+}

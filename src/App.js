@@ -1,15 +1,20 @@
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+
 import { Container } from '@mui/material';
+
 import './App.css';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import NavTabs from './components/NavTabs';
+import Sidebar from './components/Sidebar';
 import SnackBar from './components/SnackBar';
+import Standings from './pages/Standings';
 
 function App() {
   return (
-    <div className="App">
+    // eslint-disable-next-line react/react-in-jsx-scope
+    <div className="app">
       <Header />
-      <Sidebar />
       <Container
         maxWidth="md"
         sx={{
@@ -18,7 +23,12 @@ function App() {
           padding: '10px 0px',
         }}
       >
-        <NavTabs />
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<NavTabs />} />
+          <Route path="/Home" element={<NavTabs />} />
+          <Route path="/Standings" element={<Standings />} />
+        </Routes>
         <SnackBar />
       </Container>
     </div>

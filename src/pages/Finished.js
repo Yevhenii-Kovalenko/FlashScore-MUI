@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useMatchContext } from '../context/MatchContext';
 import Match from '../components/Match';
 
@@ -12,7 +12,9 @@ function Finished() {
   return (
     <Box height="100vh">
       {filteredMatches.length === 0 ? (
-        `По запиту:${searchFilteredMatch} нічого не знайдено `
+      <Typography variant='h2'>
+        По запиту:${searchFilteredMatch} нічого не знайдено
+      </Typography>
       ) : (
         <div>
           {finishedMatch.map((match) => (
