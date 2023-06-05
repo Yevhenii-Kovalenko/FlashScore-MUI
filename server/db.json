@@ -5,12 +5,12 @@
       "home": {
         "id": 1,
         "name": "Barcelona",
-        "img": "\thttps: //www.flashscore.com/res/image/data/jZ8dSYS0-vHFHR3ym.png"
+        "img": "https://www.flashscore.com/res/image/data/jZ8dSYS0-vHFHR3ym.png"
       },
       "guest": {
         "id": 2,
         "name": "Real Madrid",
-        "img": "https: //www.flashscore.com/res/image/data/CGPhnpne-vHFHR3ym.png"
+        "img": "https://www.flashscore.com/res/image/data/CGPhnpne-vHFHR3ym.png"
       },
       "goals": [
         {
@@ -84,12 +84,12 @@
       "home": {
         "id": 3,
         "name": "Man U",
-        "img": "https: //www.flashscore.com/res/image/data/GhGV3qjT-0bxZ5mFQ.png"
+        "img": "https://www.flashscore.com/res/image/data/GhGV3qjT-0bxZ5mFQ.png"
       },
       "guest": {
         "id": 4,
         "name": "Man City",
-        "img": "https: //www.flashscore.com/res/image/data/0vgscFU0-YqrvkU1k.png"
+        "img": "https://www.flashscore.com/res/image/data/0vgscFU0-YqrvkU1k.png"
       },
       "goals": [
         {
@@ -157,12 +157,12 @@
       "home": {
         "id": 5,
         "name": "Bayern",
-        "img": "https: //www.flashscore.com/res/image/data/lWGBVoA6-bRws91x8.png"
+        "img": "https://www.flashscore.com/res/image/data/lWGBVoA6-bRws91x8.png"
       },
       "guest": {
         "id": 6,
         "name": "Borussia D.",
-        "img": "https: //www.flashscore.com/res/image/data/xSfDCO76-hp56KnUJ.png"
+        "img": "https://www.flashscore.com/res/image/data/xSfDCO76-hp56KnUJ.png"
       },
       "goals": [],
       "status": "21: 45",
@@ -178,12 +178,12 @@
       "home": {
         "id": 7,
         "name": "Sevilla",
-        "img": "https: //www.flashscore.com/res/image/data/EcTGi086-I7ELQNjg.png"
+        "img": "https://www.flashscore.com/res/image/data/EcTGi086-I7ELQNjg.png"
       },
       "guest": {
         "id": 8,
         "name": "Atletico",
-        "img": "https: //www.flashscore.com/res/image/data/Kv2QSkhT-OtsiH2mJ.png"
+        "img": "https://www.flashscore.com/res/image/data/Kv2QSkhT-OtsiH2mJ.png"
       },
       "goals": [
         {
@@ -220,12 +220,12 @@
       "home": {
         "id": 9,
         "name": "PSG",
-        "img": "\thttps: //www.flashscore.com/res/image/data/fJgGn26k-S4YBKIRB.png"
+        "img": "\thttps://www.flashscore.com/res/image/data/fJgGn26k-S4YBKIRB.png"
       },
       "guest": {
         "id": 10,
         "name": "Lion",
-        "img": "https: //www.flashscore.com/res/image/data/bkuX6RS0-xWJGcPM6.png"
+        "img": "https://www.flashscore.com/res/image/data/bkuX6RS0-xWJGcPM6.png"
       },
       "goals": [
         {
@@ -262,12 +262,12 @@
       "home": {
         "id": 11,
         "name": "PSV",
-        "img": "\thttps: //www.flashscore.com/res/image/data/fefX7RQq-pKTPDvng.png"
+        "img": "https://www.flashscore.com/res/image/data/fefX7RQq-pKTPDvng.png"
       },
       "guest": {
         "id": 12,
         "name": "Ajax",
-        "img": "\thttps: //www.flashscore.com/res/image/data/ltb3XckC-EDjaYdAg.png"
+        "img": "https://www.flashscore.com/res/image/data/ltb3XckC-EDjaYdAg.png"
       },
       "goals": [
         {
@@ -292,12 +292,12 @@
       "home": {
         "id": 13,
         "name": "Santos",
-        "img": "https: //www.flashscore.com/res/image/data/hzibzPjC-UeX45DKp.png"
+        "img": "https://www.flashscore.com/res/image/data/hzibzPjC-UeX45DKp.png"
       },
       "guest": {
         "id": 14,
         "name": "Atletico M",
-        "img": "https: //www.flashscore.com/res/image/data/h8ZzOL5k-zTtxhzPu.png"
+        "img": "https://www.flashscore.com/res/image/data/h8ZzOL5k-zTtxhzPu.png"
       },
       "goals": [],
       "status": "23: 00",
@@ -313,12 +313,12 @@
       "home": {
         "id": 15,
         "name": "Dnipro",
-        "img": "https: //www.flashscore.com/res/image/data/OWqdYSVH-jDhC79I0.png"
+        "img": "https://www.flashscore.com/res/image/data/OWqdYSVH-jDhC79I0.png"
       },
       "guest": {
         "id": 16,
         "name": "Zorya",
-        "img": "\thttps: //www.flashscore.com/res/image/data/OIakXq6k-AwgDMlJB.png"
+        "img": "\thttps://www.flashscore.com/res/image/data/OIakXq6k-AwgDMlJB.png"
       },
       "goals": [
         {
@@ -343,12 +343,12 @@
       "home": {
         "id": 17,
         "name": "Porto",
-        "img": "\thttps: //www.flashscore.com/res/image/data/A5i3omUH-tr7Rzr1T.png\t"
+        "img": "\thttps://www.flashscore.com/res/image/data/A5i3omUH-tr7Rzr1T.png\t"
       },
       "guest": {
         "id": 18,
         "name": "Braga",
-        "img": "\thttps: //www.flashscore.com/res/image/data/j3CGCQTH-Wjtfb9Jr.png"
+        "img": "\thttps://www.flashscore.com/res/image/data/j3CGCQTH-Wjtfb9Jr.png"
       },
       "goals": [],
       "status": "22: 00",
@@ -364,12 +364,12 @@
       "home": {
         "id": 19,
         "name": "Juventus",
-        "img": "https: //www.flashscore.com/res/image/data/xxLGMOlC-nJE53Vjf.png"
+        "img": "https://www.flashscore.com/res/image/data/xxLGMOlC-nJE53Vjf.png"
       },
       "guest": {
         "id": 20,
         "name": "Napoli",
-        "img": "\thttps: //www.flashscore.com/res/image/data/tSuMfRjT-GMIKdqxD.png"
+        "img": "\thttps://www.flashscore.com/res/image/data/tSuMfRjT-GMIKdqxD.png"
       },
       "goals": [],
       "status": "21: 45",

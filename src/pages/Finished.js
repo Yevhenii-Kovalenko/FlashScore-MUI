@@ -3,11 +3,10 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 import Match from '../components/Match';
-import { useMatchContext } from '../context/MatchContext';
+import { useDataContext } from '../context/DataContext';
 
 function Finished() {
-  const { filteredMatches, searchFilteredMatch } = useMatchContext();
-
+  const { filteredMatches, searchFilteredMatch } = useDataContext();
   const finishedMatch = filteredMatches.filter((match) => match.status === 'finished');
 
   return (

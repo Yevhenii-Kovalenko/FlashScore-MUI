@@ -4,12 +4,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import { AppBar, Box, IconButton, TextField, Toolbar, Typography } from '@mui/material';
 
-import { useMatchContext } from '../context/MatchContext';
+import { useDataContext } from '../context/DataContext';
 import { useSidebarContext } from '../context/SidebarContext';
 
 function Header() {
   const { openDrawer } = useSidebarContext();
-  const { searchFilteredMatch, onChangeSearchValue } = useMatchContext();
+  const { searchFilteredMatch, onChangeSearchValue } = useDataContext();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
