@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Match from '../components/Match';
 import { useMatchContext } from '../context/MatchContext';
 

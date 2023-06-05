@@ -1,5 +1,7 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
+
+import { Box, Typography } from '@mui/material';
+
 import Match from '../components/Match';
 import { useMatchContext } from '../context/MatchContext';
 

@@ -1,11 +1,25 @@
 import React from 'react';
+
+import {
+  Box,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+
+import NotFound from './NotFound';
 import { standings_data } from '../data/api-mock';
-import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
+function DefaultStandings({ league }) {
+  const standings = standings_data[league];
 
-function DefaultStandings({league}) {
-  const standings = standings_data[league]
-  console.log(standings.standings[0].table);
+  if (!standings) {
+    return <NotFound />;
+  }
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -31,15 +45,17 @@ function DefaultStandings({league}) {
               <TableCell component="th" scope="row">
                 {team.position}
               </TableCell>
-              <TableCell  component="th" scope="row">
-                <Box component='img' width='20px' height='20px' mr='5px' src={team.team.crest}/>
+              <TableCell component="th" scope="row">
+                <Box component="img" width="20px" height="20px" mr="5px" src={team.team.crest} />
                 {team.team.name}
               </TableCell>
               <TableCell align="right">{team.playedGames}</TableCell>
               <TableCell align="right">{team.won}</TableCell>
               <TableCell align="right">{team.draw}</TableCell>
               <TableCell align="right">{team.lost}</TableCell>
-              <TableCell align="right">{team.goalsFor}:{team.goalsAgainst}</TableCell>
+              <TableCell align="right">
+                {team.goalsFor}:{team.goalsAgainst}
+              </TableCell>
               <TableCell align="right">{team.points}</TableCell>
               <TableCell align="right">{team.form}</TableCell>
             </TableRow>

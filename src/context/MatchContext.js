@@ -93,7 +93,18 @@ export function MatchProvider({ children }) {
       handleCloseModal,
       selectedMatchInfo,
     }),
-    [filteredLeagues, searchFilteredMatch, filteredMatches, onFavoriteMatch, badgeValue, favoriteMatch, openSnack, openSnackRemove, openModal, selectedMatchInfo]
+    [
+      filteredLeagues,
+      searchFilteredMatch,
+      filteredMatches,
+      onFavoriteMatch,
+      badgeValue,
+      favoriteMatch,
+      openSnack,
+      openSnackRemove,
+      openModal,
+      selectedMatchInfo,
+    ]
   );
 
   return useMemo(

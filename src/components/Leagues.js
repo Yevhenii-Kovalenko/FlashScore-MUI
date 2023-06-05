@@ -5,11 +5,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from '@mui/material';
 
 import Match from './Match';
+import { useDataContext } from '../context/DataContext';
 import { useMatchContext } from '../context/MatchContext';
 
 function Leagues() {
-  const { matches, filteredLeagues, searchFilteredMatch, onFavoriteMatch } = useMatchContext();
-
+  const { filteredLeagues, searchFilteredMatch, onFavoriteMatch } = useMatchContext();
+  const { data, status } = useDataContext();
+  console.log(data);
   return (
     <Box sx={{ marginTop: '20px' }}>
       {filteredLeagues.length === 0 ? (
@@ -32,23 +34,24 @@ function Leagues() {
                   <Typography>{league.name}</Typography>
                 </Box>
               </AccordionSummary>
-              {matches
-                .filter((match) => match.league.id === league.id)
-                .map((match) => (
-                  <AccordionDetails sx={{ padding: '0px' }} key={match.id}>
-                    <Match
-                      id={match.id}
-                      home={match.home}
-                      guest={match.guest}
-                      goals={match.goals}
-                      status={match.status}
-                      score={match.score}
-                      onFavoriteMatch={() => onFavoriteMatch(match)}
-                      match={match}
-                      isFavorites={false}
-                    />
-                  </AccordionDetails>
-                ))}
+              {status === 'success' &&
+                data
+                  .filter((match) => match.league.id === league.id)
+                  .map((match) => (
+                    <AccordionDetails sx={{ padding: '0px' }} key={match.id}>
+                      <Match
+                        id={match.id}
+                        home={match.home}
+                        guest={match.guest}
+                        goals={match.goals}
+                        status={match.status}
+                        score={match.score}
+                        onFavoriteMatch={() => onFavoriteMatch(match)}
+                        match={match}
+                        isFavorites={false}
+                      />
+                    </AccordionDetails>
+                  ))}
             </Accordion>
           ))}
         </div>
