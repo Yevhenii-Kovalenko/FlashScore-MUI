@@ -10,27 +10,39 @@ export const useDataContext = () => useContext(DataContext);
 export default function DataProvider({ children }) {
   const [matches, setMatches] = useState([]);
   const [leagues, setLeagues] = useState([]);
+  const [standings, setStandings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [searchFilteredMatch, setSearchFilteredMatch] = useState('');
   useEffect(() => {
     axios
       .get('http://localhost:3001/matches')
       .then((response) => {
         setMatches(response.data);
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
       });
     axios
       .get('http://localhost:3001/leagues')
       .then((response) => {
         setLeagues(response.data);
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
       });
+    axios
+      .get('http://localhost:3001/standings')
+      .then((response) => {
+        setStandings(response.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
-  console.log(matches);
   const onChangeSearchValue = (event) => {
     setSearchFilteredMatch(event.target.value);
   };
@@ -50,6 +62,9 @@ export default function DataProvider({ children }) {
         onChangeSearchValue,
         filteredLeagues,
         searchFilteredMatch,
+        loading,
+        standings,
+        leagues,
       }}
     >
       {children}
